@@ -1,74 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-
-
-        function getComputerChoice(){
-            const choices= ["rock","paper","scissors"];
-            const random= Math.floor( Math.random()*choices.length );
-            return choices[random];
-        }
-        
-
-        function playRound(playerSelection,computerSelection){
-            if(playerSelection==="rock" && computerSelection==="paper"){
-                console.log("You Lose!, paper beats rock");
-                return "loss";
-            }   
-            else if(playerSelection==="rock" && computerSelection==="scissors"){
-                console.log("You Win!, rock beats scissors");
-                return "win";
-            }   
-            else if(playerSelection==="paper" && computerSelection==="scissors"){
-                console.log("You Lose!, scissors beats paper");
-                return "loss";
-            }    
-            else{
-                console.log("Round draw :)");
-                return "draw";
-            }
-        }
-        
-
-        function game(){
-            let playerWins=0, computerWins=0;
-            const validChoices= ["rock","paper","scissor"];
-            for(let round=1;round<=5;round++){
-                let playerInput;
-                do{
-                    playerInput= prompt("Enter a choice: rock / paper / scissor").toLowerCase();
-                }
-                while(! validChoices.includes(playerInput))
-                let computerSelection= getComputerChoice();
-                let result= playRound(playerInput,computerSelection);
-                if(result=="win")
-                    playerWins++;
-                else if(result=="loss")
-                    computerWins++;
-            }
-            if(playerWins>computerWins)
-                console.log(`You Win by ${playerWins} - ${computerWins}`);
-            else if(playerWins<computerWins)
-                console.log(`You Lose by ${playerWins} - ${computerWins}`);
-            else
-                console.log("Match draw");
-        }
-
-        game();
-        
-
-
-    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Press+Start+2P&family=Roboto+Slab:wght@500&family=Satisfy&display=swap" rel="stylesheet">  
 </head>
 
 
 
-<body>   
+
+<body> 
+
+    <div class="header">
+        <h1> ROCK PAPER SCISSORS</h1>
+    </div>
+    
+    <div class="body">
+        <div class="top">
+            <p id="declaration">The first one to score 5 points, WINS !!!</p>
+            <br>
+            <div class="scores">
+                <span id="player-score">Your Score: ?</span>
+                <span id="computer-score">Computer Score: ?</span>
+            </div>
+        </div>
+        <div class="each-round"></div>
+        <div class="playround">
+            <button class="rock" style="background-image: url('rock.png'); background-size: cover; background-repeat: no-repeat; text-align: center;"></button>
+            <button class="paper" style="background-image: url('paper.png'); background-size: 290px 300px; background-repeat: no-repeat; text-align: center;"></button>
+            <button class="scissors" style="background-image: url('scissors.png'); background-size: 290px 290px; background-repeat: no-repeat; text-align: center;"></button>
+        </div>
+        <div class="bottom">
+            <div class="final-result"></div>
+        </div>
+        <div>
+            <button class="restart">RESTART GAME</button>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Copyright &copy; Nilkanta Roy</p>
+    </div>
+
 </body>
+
+
 </html>

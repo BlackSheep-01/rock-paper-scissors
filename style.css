@@ -1,0 +1,122 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url('bg.jpg');
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+
+.header{
+    background-color: brown;
+    color: whitesmoke;
+    padding: 25px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+h1{
+    text-align: center;
+    word-spacing: 20px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+
+.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin-top: 50px;
+}
+.playround{
+    display: flex;
+    gap: 80px;
+    margin: 20px;
+}
+.playround button{
+    height: 300px;
+    width: 300px;
+    border-radius: 25px;
+    border: 5px solid brown;
+    transition: 0.3s ease-in;
+}
+.playround button:hover{
+    background-color: #e74c3c;
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: 0.3s ease-out;
+    border: 6px solid gold;
+}
+.top,.bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#declaration{
+    font-size: 25px;
+    font-weight: bold;
+    color: brown;
+    font-family: 'Roboto Slab', serif;
+    margin-top: 20px;
+}
+.restart{
+    margin-top: 20px;
+    height: 50px;
+    width: 200px;
+    font-size: large;
+    border-radius: 10px;
+    font-weight: bold;
+    word-spacing: 10px;
+    background-color: brown;
+    color: whitesmoke;
+}
+.restart:hover{
+    color: gold;
+    border: 3px solid black;
+}
+.scores{
+    display: flex;
+    gap: 100px;
+    margin: 25px 10px;
+}
+.scores span{
+    font-size: 27px;
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 6px 20px;
+    background-color: bisque;
+    color: brown;
+    font-weight: bold;
+    font-family: "Monaco", monospace;
+    width: 300px;
+    text-align: center;
+}
+.each-round{
+    font-size: 25px;
+    font-family: 'Satisfy', cursive;
+    word-spacing: 15px;
+}
+.final-result{
+    font-size: 30px;
+    font-family: 'Carter One', cursive;
+    word-spacing: 9px;
+}
+
+
+.footer{
+    height: 25px;
+    margin-right: 10px;
+}
+.footer p{
+    font-style: italic;
+    text-align: right;
+    font-size: small;
+}
