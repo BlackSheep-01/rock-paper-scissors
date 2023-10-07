@@ -5,6 +5,7 @@ const finalResult= document.querySelector(".final-result");
 const restart= document.querySelector(".restart");
 const playerScore= document.querySelector("#player-score");
 const computerScore= document.querySelector("#computer-score");
+const declaration= document.querySelector("#declaration");
 
 let playerWins=0, computerWins=0;
 let gameOver= false;
@@ -20,6 +21,7 @@ function getComputerChoice(){
 
 //play & return result of each round
 function playRound(playerSelection,computerSelection){
+    declaration.innerText="";
     if(playerSelection==="rock" && computerSelection==="paper"){
         roundResult.innerText= "You Lose!!, Paper beats Rock....";
         return "loss";
@@ -64,6 +66,7 @@ function restartGame(){
     playerWins=0, computerWins=0, drawCount=0;
     roundResult.innerText="", finalResult.innerText="";
     playerScore.innerText="Your Score: ?", computerScore.innerText="Computer Score: ?";
+    declaration.innerText="The first one to score 5 points, WINS !!!";
 
     buttons.forEach( (button) => {
         button.disabled = false;  //eventHandlers of all buttons get activated again
