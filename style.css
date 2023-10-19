@@ -5,7 +5,7 @@
 }
 body{
     background-image: url('bg.jpg');
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -116,7 +116,6 @@ h1{
     margin-right: 10px;
 }
 .footer p{
-    font-style: italic;
     text-align: right;
-    font-size: small;
+    
 }
