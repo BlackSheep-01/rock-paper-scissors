@@ -1,21 +1,24 @@
 
-*{
-    margin: 0;
-    padding: 0;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 body{
-    background-image: url('bg.jpg');
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+    background-color: #222831;
 }
 
 
+
 .header{
-    background-color: brown;
-    color: whitesmoke;
+    background-color: #111720;
+    color: #fac650;
     padding: 25px;
     position: fixed;
     top: 0;
@@ -28,87 +31,139 @@ h1{
 }
 
 
+
 .body{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex: 1;
+    height: 100vh;
     margin-top: 50px;
 }
-.playround{
+
+
+
+.scoreboard{
+    color: whitesmoke;
     display: flex;
-    gap: 80px;
-    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
-.playround button{
-    height: 290px;
-    width: 290px;
-    border-radius: 25px;
-    border: 5px solid brown;
-    transition: 0.3s ease-in;
+#scoreInfo{
+    font-family: Metal Mania;
+    letter-spacing: 3px;
 }
-.playround button:hover{
-    background-color: #e74c3c;
-    transform: scale(1.1);
-    cursor: pointer;
-    transition: 0.3s ease-out;
-    border: 6px solid gold;
+#scoreMessage{
+    word-spacing: 5px;
 }
-.top,.bottom{
+.score{
+    font-size: 20px;
+}
+.scores-container{
+    display: flex;
+    width: 300px;
+    height: 150px;
+    gap: 50px;
+}
+.score-box{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 50%;
+    height: 100%;
 }
-#declaration{
-    font-size: 25px;
-    font-weight: bold;
-    color: brown;
-    font-family: 'Roboto Slab', serif;
-    margin-top: 20px;
+.sign{
+    height: 70%;
+    font-size: 80px;
 }
-.restart{
-    margin-top: 15px;
-    height: 40px;
-    width: 200px;
-    font-size: large;
-    border-radius: 10px;
-    font-weight: bold;
-    word-spacing: 10px;
-    background-color: brown;
-    color: whitesmoke;
-}
-.restart:hover{
-    color: gold;
-    border: 3px solid black;
-}
-.scores{
+
+
+
+.playround{
     display: flex;
-    gap: 100px;
-    margin: 25px 10px;
+    gap: 120px;
+    margin-bottom: 20px;
 }
-.scores span{
-    font-size: 27px;
-    border: 2px solid black;
-    border-radius: 6px;
-    padding: 6px 20px;
-    background-color: bisque;
-    color: brown;
-    font-weight: bold;
-    font-family: "Monaco", monospace;
-    width: 300px;
-    text-align: center;
+.playround button{
+    height: 150px;
+    width: 150px;
+    background-color: #222831;
+    transition: 0.3s ease-in;
+    border-radius: 30px;
+    border: none;
+    animation: rotate 6s linear infinite; /* Apply the animation */
+    border: 2px solid transparent; 
+    transition: border-color 0.3s;
 }
-.each-round{
-    font-size: 25px;
-    font-family: 'Satisfy', cursive;
-    word-spacing: 15px;
+@keyframes rotate {
+    from {
+        transform: rotate(0deg); 
+    }
+    to {
+        transform: rotate(360deg); 
+    }
+}
+.playround button:hover{
+    cursor: pointer;
+    transition: 0.9s ease-out;
+    background-color: #111720;
+    border-color: #3498db;
+}
+
+
+.rock{
+    background-image: url("rock.png");
+    background-repeat: no-repeat; 
+    background-size: 100% 100%;
+    background-position: center;
+    padding: 15px;
+}
+.paper{
+    background-image: url("paper.png");
+    background-repeat: no-repeat; 
+    background-size: 100% 100%;
+    background-position: center;
+    padding: 15px;
+}
+.scissors{
+    background-image: url("scissors.png");
+    background-repeat: no-repeat; 
+    background-size: 100% 100%;
+    background-position: center;
+    padding: 15px;
+}
+
+
+.result{
+    height: 45px;
+    margin: 20px;
 }
 .final-result{
     font-size: 26px;
     font-family: 'Carter One', cursive;
     word-spacing: 9px;
+    text-shadow: 3px 3px black;
 }
+
+
+
+.restart{
+    margin-top: 10px;
+    height: 30px;
+    width: 120px;
+    border-radius: 10px;
+    font-size: 12px;
+    background-color: #111720;
+    color: whitesmoke;
+    border: none;
+}
+.restart:hover{
+    color: gold;
+    border: 1px solid gold;
+}
+
 
 
 .footer{
@@ -116,6 +171,6 @@ h1{
     margin-right: 10px;
 }
 .footer p{
-    text-align: right;
-    
+    text-align: center;
+    color: whitesmoke;   
 }

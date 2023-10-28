@@ -1,15 +1,17 @@
 
 const buttons= document.querySelectorAll("button");
-const roundResult= document.querySelector(".each-round");
+const declaration= document.querySelector("#scoreInfo");
+const roundResult= document.querySelector("#scoreMessage");
 const finalResult= document.querySelector(".final-result");
 const restart= document.querySelector(".restart");
 const playerScore= document.querySelector("#player-score");
 const computerScore= document.querySelector("#computer-score");
-const declaration= document.querySelector("#declaration");
+const playerSign= document.querySelector("#playerSign");
+const computerSign= document.querySelector("#computerSign");
+
 
 let playerWins=0, computerWins=0;
 let gameOver= false;
-let drawCount=0;
 
 
 function getComputerChoice(){
@@ -19,29 +21,27 @@ function getComputerChoice(){
 }
 
 
-//play & return result of each round
+//each game round
 function playRound(playerSelection,computerSelection){
-    declaration.innerText="";
-    if(playerSelection==="rock" && computerSelection==="paper"){
-        roundResult.innerText= "You Lose!!, Paper beats Rock....";
-        return "loss";
-    }   
-    else if(playerSelection==="rock" && computerSelection==="scissors"){
-        roundResult.innerText= "You Win!!, Rock beats Scissors....";
-        return "win";
-    }   
-    else if(playerSelection==="paper" && computerSelection==="scissors"){
-        roundResult.innerText= "You Lose!!, Scissors beats Paper....";
-        return "loss";
-    }    
-    else{
-        drawCount++;
-        if(drawCount<=1)
-            roundResult.innerText= "Round Draw :)";
-        else
-            roundResult.innerText= `${drawCount} Rounds Draw :)`;
-        return "draw";
+    if(playerSelection===computerSelection){
+            declaration.innerText= "Round Draw :)";
+            roundResult.innerText= `${playerSelection.toUpperCase()} ties with ${computerSelection.toUpperCase()}`;
+            return "draw";
     }
+    else if((playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper') ||
+        (playerSelection === 'paper' && computerSelection === 'rock')){
+            declaration.innerText= "You Win ✓";
+            roundResult.innerText= `${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}`;
+            return "win";
+    }
+    else if((computerSelection === 'rock' && playerSelection === 'scissors') ||
+        (computerSelection === 'scissors' && playerSelection === 'paper') ||
+        (computerSelection === 'paper' && playerSelection === 'rock')){
+            declaration.innerText= "You Lose ✘";
+            roundResult.innerText= `${playerSelection.toUpperCase()} is beaten by ${computerSelection.toUpperCase()}`;
+            return "loss";
+      }
 }
 
 
@@ -49,11 +49,11 @@ function playRound(playerSelection,computerSelection){
 function endGame(){
     gameOver=true; //change value to end the game
     if (playerWins > computerWins){
-        finalResult.innerText = `YOU WON BY : ${playerWins} - ${computerWins}. Good Game.`;
+        finalResult.innerText = `YOU WON BY : ${playerWins} - ${computerWins}`;
         finalResult.style.color= 'green';
     }
     else if (playerWins < computerWins){
-        finalResult.innerText = `YOU LOST BY : ${playerWins} - ${computerWins}. Loser lol.`;
+        finalResult.innerText = `YOU LOST BY : ${playerWins} - ${computerWins}`;
         finalResult.style.color= 'red';
     }
         
@@ -64,9 +64,12 @@ function endGame(){
 function restartGame(){
     gameOver=false;
     playerWins=0, computerWins=0, drawCount=0;
-    roundResult.innerText="", finalResult.innerText="";
-    playerScore.innerText="Your Score: ?", computerScore.innerText="Computer Score: ?";
-    declaration.innerText="The first one to score 5 points, WINS !!!";
+    finalResult.innerText="";
+    playerScore.innerText="You: 0", computerScore.innerText="Computer: 0";
+    declaration.innerText="Choose your weapon";
+    roundResult.innerText="First to score 5 points wins the game...";
+    playerSign.innerText="❔";
+    computerSign.innerText="❔";
 
     buttons.forEach( (button) => {
         button.disabled = false;  //eventHandlers of all buttons get activated again
@@ -83,13 +86,14 @@ buttons.forEach( (button) => {
         let playerInput= button.getAttribute("class");
         let computerSelection= getComputerChoice();
         let result= playRound(playerInput,computerSelection);
+        updateChoices(playerInput,computerSelection);
 
         if(result=="win")
             playerWins++;
         else if(result=="loss")
             computerWins++;
-        playerScore.innerText= `Your Score: ${playerWins}`;
-        computerScore.innerText= `Computer Score: ${computerWins}`;
+        playerScore.innerText= `You: ${playerWins}`;
+        computerScore.innerText= `Computer: ${computerWins}`;
 
         if(playerWins>=5 || computerWins>=5)
             endGame();
@@ -102,7 +106,31 @@ restart.addEventListener("click", () => {
 })
 
 
-
+function updateChoices(playerSelection, computerSelection) {
+    switch (playerSelection) {
+      case 'rock':
+        playerSign.textContent = '✊'
+        break
+      case 'paper':
+        playerSign.textContent = '✋'
+        break
+      case 'scissors':
+        playerSign.textContent = '✌'
+        break
+    }
+  
+    switch (computerSelection) {
+      case 'rock':
+        computerSign.textContent = '✊'
+        break
+      case 'paper':
+        computerSign.textContent = '✋'
+        break
+      case 'scissors':
+        computerSign.textContent = '✌'
+        break
+    }
+  }
 
 
 
